@@ -3,33 +3,29 @@ Lese inn data i R
 Jo Thori Lind
 27 1 2021
 
-## R Markdown
+Hvordan man leser data inn i R avhenger av hva slags datafil man skal
+lese fra. Her skal vi ta for oss noen av de vanligste formatene.
 
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see <http://rmarkdown.rstudio.com>.
+# Tekstfiler
 
-When you click the **Knit** button a document will be generated that
-includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
+Tekstfiler er filer som kan åpnes (og gir mening) i et vanlig
+tekstredigeringsprogram som Notepad. Her er det vanlig å ha en linje
+øverst med variabelnavn og så en observajon på hver linje nedover. Det
+er flere måter å skille kolonnene (variablene) fra hverandre: komma,
+tabulatortegn, mellomrom, semikolon osv.
+
+De fleste typer tekstfiler kan leses inn med `read.delim`, men her må
+man bruke opsjonen `sep =` for å angi hva som skiller kolonnene. Hvis
+man vet det er komma kan man forenkle med å bruke `read.csv`. Hvis du
+skal lese inn fila `inntekt.csv` kan du for eksempel bruke
 
 ``` r
-summary(cars)
+innt <- read.csv('inntekt.csv')
 ```
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+Merk at navnet på fila du skal lese inn må være i enkle eller doble
+hermetegn. Vi kan også bruke
 
-## Including Plots
-
-You can also embed plots, for example:
-
-![](LeseInnData_files/figure-gfm/pressure-1.png)<!-- -->
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+``` r
+innt <- read.delim('inntekt.csv', sep = ',')
+```
